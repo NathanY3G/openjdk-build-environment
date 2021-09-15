@@ -10,11 +10,11 @@ RUN apt-get update && apt-get install -y \
     libasound2-dev libcups2-dev libfontconfig-dev libx11-dev libxext-dev libxrender-dev libxtst-dev libxrandr-dev libxt-dev \
     openjdk-17-jdk-headless
 
-ARG UID=1234
-ARG GID=1234
+ARG USER_ID=1234
+ARG GROUP_ID=1234
 
-RUN addgroup --quiet --gid ${GID} duke && adduser --quiet --uid ${UID} --gid ${GID} --disabled-password --gecos GECOS duke
-USER ${UID}:${GID}
+RUN addgroup --quiet --gid ${GROUP_ID} duke && adduser --quiet --uid ${USER_ID} --gid ${GROUP_ID} --disabled-password --gecos GECOS duke
+USER ${USER_ID}:${GROUP_ID}
 WORKDIR /usr/local/src
 
 ENTRYPOINT ["/bin/bash"]
